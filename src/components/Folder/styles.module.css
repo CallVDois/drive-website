@@ -1,0 +1,11 @@
+
+.item__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 4px;
+    & li::marker {
+        content: "";
+    }
+}

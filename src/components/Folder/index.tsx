@@ -8,7 +8,7 @@ import File from "./Item/File";
 
 type FolderProps = {
   folder: FolderModel
-  handleChangeToRoot:  () => Promise<void>
+  handleChangeToRoot: () => Promise<void>
   handleChange: (id: string) => Promise<void>
 }
 

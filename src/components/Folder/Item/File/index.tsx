@@ -3,14 +3,14 @@ import type { FileModel } from "../../../../types/file.type";
 
 type FileProps = {
   file: FileModel
-  onClick?: () => void;
+  handleDownload: (file: FileModel) => Promise<void>;
 }
 
 
-function File({ file, onClick }: FileProps) {
+function File({ file, handleDownload }: FileProps) {
   return (
     <>
-      <Item name={file.name} date={file.updatedAt} size={file.contentSize.toString()} type={"file"} onClick={onClick} />
+      <Item name={file.name} date={file.updatedAt} size={file.contentSize.toString()} type={"file"} onClick={() => handleDownload(file)} />
     </>
   )
 }

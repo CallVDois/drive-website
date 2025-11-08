@@ -5,15 +5,17 @@ import styles from './styles.module.css';
 import Navigator from "./Navigator";
 import SubFolder from "./Item/SubFolder";
 import File from "./Item/File";
+import type { FileModel } from "../../types/file.type";
 
 type FolderProps = {
   folder: FolderModel
+  handleDownload: (file: FileModel) => Promise<void>;
   handleChangeToRoot: () => Promise<void>
   handleChange: (id: string) => Promise<void>
 }
 
 // function Folder({ folder }: FolderProps) {
-function Folder({ folder, handleChange, handleChangeToRoot }: FolderProps) {
+function Folder({ folder, handleChange, handleChangeToRoot, handleDownload }: FolderProps) {
   return (
     <>
       <section className={styles.folder} aria-labelledby="folder-title">
@@ -41,7 +43,9 @@ function Folder({ folder, handleChange, handleChangeToRoot }: FolderProps) {
 
             {folder.files.map(file => (
               <li key={file.id}>
-                <File file={file} />
+                <File
+                  file={file}
+                  handleDownload={handleDownload} />
               </li>
             ))}
 

@@ -1,29 +1,26 @@
 .item {
-    width: 100%;
-    max-width: 100%;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
     padding: 10px 20px;
     background-color: #282c34;
     color: white;
     gap: 8px;
-    &::marker {
-        content: "";
-    }
 }
 
 .item__name {
+    display: flex;
+    align-items: center;
     background-color: #832e2e;
     flex-wrap: nowrap;
-    align-items: center;
-    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     flex: 1;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
     gap: 10px;
 }
 

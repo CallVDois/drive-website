@@ -1,17 +1,23 @@
 import Item from "..";
 import type { FileModel } from "../../../../types/file.type";
 
+import fileIcon from '../../../../assets/file.svg'
+
 type FileProps = {
   file: FileModel
   handleDownload: (file: FileModel) => Promise<void>;
 }
 
-
 function File({ file, handleDownload }: FileProps) {
   return (
-    <>
-      <Item name={file.name} date={file.updatedAt} size={file.contentSize.toString()} type={"file"} onClick={() => handleDownload(file)} />
-    </>
+    <Item
+      name={file.name}
+      date={file.updatedAt}
+      size={file.contentSize.toString()}
+      type={"file"}
+      imageSrc={fileIcon}
+      onClick={() => handleDownload(file)}
+    />
   )
 }
 

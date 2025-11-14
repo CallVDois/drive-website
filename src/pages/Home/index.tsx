@@ -1,7 +1,10 @@
 import { useFolder } from "../../hooks/useFolder";
-
-import Folder from "../../components/Folder";
 import { useFile } from "../../hooks/useFile";
+
+import Navigator from "../../components/Navigator";
+import Folder from "../../components/Folder";
+
+import styles from './styles.module.css';
 
 function Home() {
 
@@ -18,15 +21,18 @@ function Home() {
 
   return (
     <>
-      <section>
-        <h1>Drive Home</h1>
+      <article className={styles.home}>
+        <Navigator
+          actualFolder={folder}
+          handleChangeFolder={handleChange}
+          handleChangeToRoot={handleChangeToRoot}
+        />
         <Folder
           folder={folder}
           handleDownload={handleDownload}
           handleChange={handleChange}
-          handleChangeToRoot={handleChangeToRoot}
         />
-      </section>
+      </article>
     </>
   )
 }

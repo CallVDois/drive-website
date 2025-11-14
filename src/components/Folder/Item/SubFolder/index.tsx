@@ -12,8 +12,6 @@ function SubFolder({ subFolder, handleOpenFolder }: FolderProps) {
   return (
     <Item
       name={subFolder.name}
-      date="-"
-      size="-"
       type={"folder"}
       imageSrc={folderIcon}
       onClick={() => handleOpenFolder(subFolder.id)}

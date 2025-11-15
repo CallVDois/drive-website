@@ -15,14 +15,15 @@ type FolderProps = {
 function Folder({ folder, handleChange, handleDownload }: FolderProps) {
   return (
     <>
-      <section className={styles.folder} aria-labelledby="folder-title">
+      <section className={styles.folder}>
+
         <h2 id="folder-title">{folder.name}</h2>
 
         <section aria-label="SubFolders">
           <h3>Folders</h3>
           <ul className={styles.item__wrapper}>
             {folder.subFolders.map(subFolder => (
-              <li key={subFolder.id}>
+              <li key={subFolder.id} className={styles.item}>
                 <SubFolder
                   subFolder={subFolder}
                   handleOpenFolder={handleChange}
@@ -35,16 +36,14 @@ function Folder({ folder, handleChange, handleDownload }: FolderProps) {
         <section aria-label="Files">
           <h3>Files</h3>
           <ul className={styles.item__wrapper}>
-
             {folder.files.map(file => (
-              <li key={file.id}>
+              <li key={file.id} className={styles.item}>
                 <File
                   file={file}
                   handleDownload={handleDownload}
                 />
               </li>
             ))}
-
           </ul>
         </section>
 

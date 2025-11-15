@@ -1,23 +1,25 @@
 .folder {
-
     display: flex;
     flex-direction: column;
-
-    padding: 1rem;
-
+    overflow: hidden;
+    background: #0F172A;
+    border-radius: 0.8rem;
+    border: 1px solid #ffffff1a;
+    height: 100%;
 }
 
 .item__wrapper {
-
     display: flex;
     flex-direction: column;
-
-
-    /* flex-wrap: nowrap; */
-    /* justify-content: flex-start; */
-    /* gap: 4px; */
+    padding: 0.5rem;
 }
 
-.item__wrapper li {
+.item {
     list-style: none;
+    margin: 0.2rem 0rem 0.2rem 0rem;
+}
+
+.item:hover {
+    background: #cf0f0f;
+    cursor: pointer;
 }

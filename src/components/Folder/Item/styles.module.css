@@ -6,14 +6,25 @@
 
     display: flex;
     align-items: center;
-
     padding: 0.8rem 0.6rem;
     border-radius: 0.6rem;
-
     color: var(--text-color);
     background-color: var(--background-color);
     border: 0.1rem solid var(--border-color);
 
+    transition: background-color 0.2s ease-out;
+
+}
+
+.item:hover {
+    background: #113bc7be;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+
+.item:active {
+    background: #beb319;
+    transition: background-color 0.2s ease;
 }
 
 .item__image {

@@ -23,7 +23,6 @@ export function useFolder(): UseFolder {
 
     const handleChangeFolder = async (id: string) => {
         try {
-            console.log(id)
             const result = await getFolder(id)
             setFolder(result)
             setIsLoaded(true)

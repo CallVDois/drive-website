@@ -1,9 +1,9 @@
 import { safeString } from "../../utils/mapper.util";
 
 import { FileModel } from "../../../types/file.type";
-import type { FolderModel, SubFolderModel } from "../../../types/folder.type";
+import type { FolderModel, FolderPathModel, FolderPathSegmentModel, SubFolderModel } from "../../../types/folder.type";
 
-import type { FileSummaryDTO, FolderDetailDTO, SubFolderDTO } from "./folder.types";
+import type { FileSummaryDTO, FolderDetailDTO, FolderPathDTO, FolderPathSegmentDTO, SubFolderDTO } from "./folder.types";
 
 
 export function mapFolderDetailDTOToFolderModel(folderDto: FolderDetailDTO): FolderModel {
@@ -12,11 +12,26 @@ export function mapFolderDetailDTOToFolderModel(folderDto: FolderDetailDTO): Fol
         id: folderDto.id,
         name: folderDto.name,
         parentFolder: folderDto.parentFolder,
+        path: mapFolderPathDTOToFolderPathModel(folderDto.path),
         subFolders: folderDto.subFolders.map(mapSubFolderDTOToSubFolderModel),
         files: folderDto.files.map(mapFileSummaryDTOToFileModel),
         createdAt: folderDto.createdAt,
         updatedAt: folderDto.updatedAt
     }
+
+}
+
+export function mapFolderPathDTOToFolderPathModel(pathDto: FolderPathDTO): FolderPathModel {
+
+    return {
+        segments: pathDto.segments.map(mapFolderPathSegmentDTOToFolderPathSegmentModel)
+    }
+
+}
+
+export function mapFolderPathSegmentDTOToFolderPathSegmentModel(segmentDto: FolderPathSegmentDTO): FolderPathSegmentModel {
+
+    return { id: segmentDto.id, name: segmentDto.name }
 
 }
 

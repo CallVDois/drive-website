@@ -4,6 +4,7 @@ export interface FolderModel {
     id: string;
     name: string;
     parentFolder: string;
+    path: FolderPathModel;
     subFolders: SubFolderModel[];
     files: FileModel[];
     createdAt: string;
@@ -11,6 +12,15 @@ export interface FolderModel {
 }
 
 export interface SubFolderModel {
+    id: string;
+    name: string;
+}
+
+export interface FolderPathModel {
+    segments: FolderPathSegmentModel[];
+}
+
+export interface FolderPathSegmentModel {
     id: string;
     name: string;
 }

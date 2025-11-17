@@ -11,13 +11,13 @@ function Home() {
   const
     {
       folder,
-      handleChange,
-      handleChangeToRoot
+      handleChange
     } = useFolder();
 
-  const {
-    handleDownload
-  } = useFile();
+  const
+    {
+      handleDownload
+    } = useFile();
 
   return (
     <>
@@ -25,7 +25,6 @@ function Home() {
         <Navigator
           actualFolder={folder}
           handleChangeFolder={handleChange}
-          handleChangeToRoot={handleChangeToRoot}
         />
         <Folder
           folder={folder}

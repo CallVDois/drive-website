@@ -18,10 +18,6 @@ export function useFile(): UseFile {
 
     const handleDownload = async (file: FileModel) => {
         try {
-
-            console.log(file)
-
-
             setIsDownloading(true);
 
             const fileBlob = await getContent(file.id);

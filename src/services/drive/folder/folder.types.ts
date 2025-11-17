@@ -9,6 +9,7 @@ export interface FolderDetailDTO {
     name: string
     rootFolder: boolean
     parentFolder: string
+    path: FolderPathDTO
     subFolders: SubFolderDTO[]
     files: FileSummaryDTO[]
     ownerId: string
@@ -25,6 +26,15 @@ export interface FileSummaryDTO {
 }
 
 export interface SubFolderDTO {
+    id: string
+    name: string
+}
+
+export interface FolderPathDTO {
+    segments: FolderPathSegmentDTO[]
+}
+
+export interface FolderPathSegmentDTO {
     id: string
     name: string
 }

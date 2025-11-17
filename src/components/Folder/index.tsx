@@ -17,8 +17,6 @@ function Folder({ folder, handleChange, handleDownload }: FolderProps) {
     <>
       <section className={styles.folder}>
 
-        <h2 id="folder-title">{folder.name}</h2>
-
         <section aria-label="SubFolders">
           <h3>Folders</h3>
           <ul className={styles.item__wrapper}>

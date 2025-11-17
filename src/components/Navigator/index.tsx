@@ -1,27 +1,73 @@
 import styles from './styles.module.css';
 
-import type { FolderModel } from '../../../types/folder.type';
+import type { FolderModel, FolderPathSegmentModel } from '../../types/folder.type';
 
 type NavigatorProps = {
   actualFolder: FolderModel
-  handleChangeToRoot: () => Promise<void>
   handleChangeFolder: (id: string) => Promise<void>
+}
+
+function Navigator({ actualFolder, handleChangeFolder }: NavigatorProps) {
+
+  const breadcrumbContent = breadcrumbList(actualFolder.path.segments, handleChangeFolder)
+
+  return (
+    <section className={styles.breadcrumb} >
+      {breadcrumbContent}
+    </section>
+  )
+}
+
+function breadcrumbItem(segment: FolderPathSegmentModel, onClick: () => void) {
+
+  return (
+    <li key={segment.id} className={styles.breadcrumb__list__item} >
+      <div>
+        <button onClick={onClick}>{segment.name}</button>
+        <span>{">"}</span>
+      </div>
+    </li>
+  )
 
 }
 
-function Navigator({ actualFolder, handleChangeToRoot, handleChangeFolder }: NavigatorProps) {
+function lastBreacrumbItem(segment: FolderPathSegmentModel) {
+
   return (
-    <section aria-label="Folder Navigator">
-      {actualFolder.parentFolder ? (
-        <>
-          <a className={styles.navigator__root} onClick={() => { handleChangeToRoot() }}>Pasta Raiz</a>
-          <a className={styles.navigator__voltar} onClick={() => { handleChangeFolder(actualFolder.parentFolder) }}>Voltar</a>
-        </>
-      ) : (
-        <p>Pasta Raiz</p>
-      )}
-    </section>
+    <li key={segment.id} className={styles.breadcrumb__list__item}>
+      <span className={styles.breadcrumb__list__item__last}>
+        {segment.name}
+      </span>
+    </li>
   )
+
+}
+
+function breadcrumbList(segments: FolderPathSegmentModel[], handleChangeFolder: (id: string) => Promise<void>) {
+
+  const reversedSegments = [...segments].reverse();
+
+  console.log(reversedSegments);
+
+  if (reversedSegments.length < 1)
+    return <ol></ol>;
+
+  if (reversedSegments.length === 1)
+    return <ol>{lastBreacrumbItem(reversedSegments[0])}</ol>;
+
+  const firstsSegments = reversedSegments.slice(0, -1)
+  const lastSegment = reversedSegments.at(-1)
+
+  const firstsItems = firstsSegments.map(segment => breadcrumbItem(segment, () => handleChangeFolder(segment.id)))
+  const lastItem = lastSegment ? lastBreacrumbItem(lastSegment) : null
+
+  return (
+    <ol className={styles.breadcrumb__list}>
+      {firstsItems}
+      {lastItem}
+    </ol>
+  )
+
 }
 
 export default Navigator

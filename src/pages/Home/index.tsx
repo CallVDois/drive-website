@@ -1,8 +1,9 @@
-import { useFolder } from "../../hooks/useFolder";
 import { useFile } from "../../hooks/useFile";
+import { useFolder } from "../../hooks/useFolder";
 
-import Navigator from "../../components/Navigator";
+import CommandBar from "../../components/CommandBar";
 import Folder from "../../components/Folder";
+import Navigator from "../../components/Navigator";
 
 import styles from './styles.module.css';
 
@@ -11,7 +12,8 @@ function Home() {
   const
     {
       folder,
-      handleChange
+      handleChange,
+      handleCreateFolder
     } = useFolder();
 
   const
@@ -19,9 +21,17 @@ function Home() {
       handleDownload
     } = useFile();
 
+
+
+
   return (
     <>
       <article className={styles.home}>
+
+        <CommandBar
+          handleCreateFolder={handleCreateFolder}
+        />
+
         <Navigator
           actualFolder={folder}
           handleChangeFolder={handleChange}

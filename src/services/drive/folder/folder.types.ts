@@ -17,6 +17,15 @@ export interface FolderDetailDTO {
     updatedAt: string
 }
 
+export interface CreateFolderDTO {
+    name: string
+    parentFolderId?: string
+}
+
+export interface CreateFolderResponseDTO {
+    id: string
+}
+
 export interface FileSummaryDTO {
     id: string
     name: string

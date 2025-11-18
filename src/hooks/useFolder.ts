@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { getFolder, getRootFolder } from "../services/drive/folder/folder.api";
+import { createFolder, getFolder, getRootFolder } from "../services/drive/folder/folder.api";
 
 import type { FolderModel } from "../types/folder.type";
 
@@ -12,6 +12,7 @@ export interface UseFolder {
     error?: any;
     handleChange: (id: string) => Promise<void>;
     handleChangeToRoot: () => Promise<void>;
+    handleCreateFolder: (name: string) => Promise<void>;
 }
 
 export function useFolder(): UseFolder {
@@ -43,12 +44,22 @@ export function useFolder(): UseFolder {
         }
     }
 
+    const handleCreateFolder = async (name: string) => {
+        try {
+            await createFolder({ name, parentFolderId: folder.id })
+            await handleChangeFolder(folder.id);
+        } catch (error) {
+            setError(error)
+        }
+    }
+
     return {
         folder,
         isLoaded,
         error,
         handleChange: handleChangeFolder,
-        handleChangeToRoot
+        handleChangeToRoot,
+        handleCreateFolder
     };
 
 }

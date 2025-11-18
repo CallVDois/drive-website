@@ -16,18 +16,19 @@ function CommandBar({ handleCreateFolder }: CommandBarProps) {
   return (
     <>
       <section className={styles.commandbar}>
-
-        <button onClick={() => setIsCreateFolderModalOpen(true)}>
-          Criar Pasta
+        <button className={styles.commandbar__button} onClick={() => setIsCreateFolderModalOpen(true)}>
+          Create Folder
         </button>
-
-        <CreateFolderModal
-          isOpen={isCreateFolderModalOpen}
-          onClose={() => setIsCreateFolderModalOpen(false)}
-          handleCreate={handleCreateFolder}
-        />
-
+        <button className={styles.commandbar__button} onClick={() => { }}>
+          Upload File
+        </button>
       </section>
+
+      <CreateFolderModal
+        isOpen={isCreateFolderModalOpen}
+        onClose={() => setIsCreateFolderModalOpen(false)}
+        handleCreate={handleCreateFolder}
+      />
     </>
   )
 }

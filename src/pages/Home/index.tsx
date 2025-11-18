@@ -21,21 +21,21 @@ function Home() {
       handleDownload
     } = useFile();
 
-
-
-
   return (
     <>
       <article className={styles.home}>
 
-        <CommandBar
-          handleCreateFolder={handleCreateFolder}
-        />
+        <div className={styles.home__topbar}>
+          <Navigator
+            actualFolder={folder}
+            handleChangeFolder={handleChange}
+          />
 
-        <Navigator
-          actualFolder={folder}
-          handleChangeFolder={handleChange}
-        />
+          <CommandBar
+            handleCreateFolder={handleCreateFolder}
+          />
+        </div>
+
         <Folder
           folder={folder}
           handleDownload={handleDownload}

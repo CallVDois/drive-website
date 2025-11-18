@@ -18,7 +18,8 @@ function Home() {
 
   const
     {
-      handleDownload
+      handleDownload,
+      handleUpload
     } = useFile();
 
   return (
@@ -32,7 +33,9 @@ function Home() {
           />
 
           <CommandBar
+            folder={folder}
             handleCreateFolder={handleCreateFolder}
+            handleUpload={handleUpload}
           />
         </div>
 
